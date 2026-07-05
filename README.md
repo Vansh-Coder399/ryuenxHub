@@ -13,7 +13,7 @@
 <!-- Replace with your own screenshot or GIF after first deploy -->
 <!-- ![RyuenxHub Dashboard Screenshot](./public/screenshot-placeholder.png) -->
 
-[**Live Demo →**](https://ryuenx-hub.vercel.app) &nbsp;·&nbsp; [Report a Bug](https://github.com/Vansh-Coder399/ryuenxhub/issues) &nbsp;·&nbsp; [Request a Feature](https://github.com/Vansh-Coder399/ryuenxhub/issues)
+[**Live Demo →**](https://ryuenx-hub.vercel.app) &nbsp;·&nbsp; [Report a Bug](https://github.com/Vansh-Coder399/ryuenxHub/issues) &nbsp;·&nbsp; [Request a Feature](https://github.com/Vansh-Coder399/ryuenxHub/issues)
 
 </div>
 
@@ -63,7 +63,7 @@
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/ryuenx/ryuenxhub.git
+git clone https://github.com/Coder-Vansh399/ryuenxHub.git
 cd ryuenxhub
 
 # 2. Install dependencies
