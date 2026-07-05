@@ -63,7 +63,7 @@
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/Coder-Vansh399/ryuenxHub.git
+git clone https://github.com/Vansh-Coder399/ryuenxHub.git
 cd ryuenxhub
 
 # 2. Install dependencies
