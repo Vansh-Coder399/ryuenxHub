@@ -1,8 +1,8 @@
 /**
  * Sidebar — narrow left icon rail.
- * Receives notesOpen so it can highlight the Notes button when active.
+ * Receives open-state booleans to highlight the active panel button.
  */
-export default function Sidebar({ onOpenNotes, notesOpen }) {
+export default function Sidebar({ onOpenNotes, notesOpen, onOpenLinks, linksOpen }) {
   return (
     <aside
       className="
@@ -28,13 +28,14 @@ export default function Sidebar({ onOpenNotes, notesOpen }) {
       {/* Divider */}
       <div className="w-7 h-px bg-surface-border flex-shrink-0" />
 
-      {/* Notes trigger — highlights when panel is open */}
-      <SidebarButton
-        onClick={onOpenNotes}
-        title="Notes"
-        active={notesOpen}
-      >
+      {/* Notes trigger */}
+      <SidebarButton onClick={onOpenNotes} title="Notes" active={notesOpen}>
         <NoteIcon />
+      </SidebarButton>
+
+      {/* Quick Links trigger */}
+      <SidebarButton onClick={onOpenLinks} title="Links" active={linksOpen}>
+        <LinkIcon />
       </SidebarButton>
 
       {/* Spacer */}
@@ -46,7 +47,7 @@ export default function Sidebar({ onOpenNotes, notesOpen }) {
         target="_blank"
         rel="noopener noreferrer"
         className="icon-btn"
-        title="GitHub — @ryuenx"
+        title="GitHub — @Vansh-Coder399"
         aria-label="GitHub profile"
       >
         <GitHubIcon />
@@ -92,6 +93,16 @@ function NoteIcon() {
       <polyline points="14 2 14 8 20 8" />
       <line x1="16" y1="13" x2="8" y2="13" />
       <line x1="16" y1="17" x2="8" y2="17" />
+    </svg>
+  )
+}
+
+function LinkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
     </svg>
   )
 }

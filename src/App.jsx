@@ -3,30 +3,57 @@ import Sidebar from './components/Sidebar'
 import WeatherWidget from './components/WeatherWidget'
 import CryptoWidget from './components/CryptoWidget'
 import NotesPanel from './components/NotesPanel'
+import QuickLinksPanel from './components/QuickLinksPanel'
+import QuickLinksBar from './components/QuickLinksBar'
+import { useQuickLinks } from './hooks/useQuickLinks'
 
 /**
  * App — root shell.
- * Owns notes-panel open/close state; passes it down to Sidebar + NotesPanel.
+ * Owns open/close state for both slide-in panels (Notes + Quick Links).
+ * Only one panel can be open at a time — opening one closes the other.
  */
 export default function App() {
   const [notesOpen, setNotesOpen] = useState(false)
+  const [linksOpen, setLinksOpen] = useState(false)
 
-  // Close panel on Escape key
+  // Single shared instance — both QuickLinksBar and QuickLinksPanel
+  // receive this same state, so mutations in the panel instantly
+  // reflect in the bar without a page refresh.
+  const quickLinks = useQuickLinks()
+
+  // Close whichever panel is open on Escape
   useEffect(() => {
     function onKey(e) {
-      if (e.key === 'Escape') setNotesOpen(false)
+      if (e.key === 'Escape') {
+        setNotesOpen(false)
+        setLinksOpen(false)
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
+
+  function openNotes() {
+    setLinksOpen(false)
+    setNotesOpen(true)
+  }
+
+  function openLinks() {
+    setNotesOpen(false)
+    setLinksOpen(true)
+  }
+
+  const anyOpen = notesOpen || linksOpen
 
   return (
     <div className="flex min-h-dvh bg-surface">
 
       {/* ── Sidebar ─────────────────────────────────────────── */}
       <Sidebar
-        onOpenNotes={() => setNotesOpen(true)}
+        onOpenNotes={openNotes}
         notesOpen={notesOpen}
+        onOpenLinks={openLinks}
+        linksOpen={linksOpen}
       />
 
       {/* ── Main content ────────────────────────────────────── */}
@@ -45,14 +72,11 @@ export default function App() {
           <Clock />
         </header>
 
-        {/* ── Widget grid ──────────────────────────────────────
-            • xs / mobile  : single-column stack
-            • md+          : each widget still full-width (both span 2 cols)
-                             — keeps the cards readable at any viewport width
-        ──────────────────────────────────────────────────── */}
+        {/* Widget stack */}
         <section className="flex-1 flex flex-col gap-4 sm:gap-5 px-4 sm:px-6 pt-3 pb-4">
           <WeatherWidget />
           <CryptoWidget />
+          <QuickLinksBar links={quickLinks.links} />
         </section>
 
         {/* Footer */}
@@ -62,14 +86,15 @@ export default function App() {
         </footer>
       </main>
 
-      {/* ── Notes panel ─────────────────────────────────────── */}
-      <NotesPanel isOpen={notesOpen} onClose={() => setNotesOpen(false)} />
+      {/* ── Slide-in panels ─────────────────────────────────── */}
+      <NotesPanel      isOpen={notesOpen} onClose={() => setNotesOpen(false)} />
+      <QuickLinksPanel isOpen={linksOpen}  onClose={() => setLinksOpen(false)} quickLinks={quickLinks} />
 
-      {/* Backdrop — covers full screen on all viewports when panel is open */}
-      {notesOpen && (
+      {/* Backdrop — shared across both panels */}
+      {anyOpen && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30"
-          onClick={() => setNotesOpen(false)}
+          onClick={() => { setNotesOpen(false); setLinksOpen(false) }}
           aria-hidden="true"
         />
       )}
@@ -77,7 +102,7 @@ export default function App() {
   )
 }
 
-/* ── Clock — live HH:MM display ────────────────────────────── */
+/* ── Clock ──────────────────────────────────────────────────── */
 function Clock() {
   const [time, setTime] = useState(() => new Date())
 
