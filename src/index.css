@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base reset ─────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface text-text-primary font-sans;
+    min-height: 100dvh;
+  }
+
+  /* Custom scrollbar — thin, dark, matches theme */
+  ::-webkit-scrollbar        { width: 5px; }
+  ::-webkit-scrollbar-track  { background: #0f1117; }
+  ::-webkit-scrollbar-thumb  { background: #2a3347; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #4a5468; }
+}
+
+/* ── Component utilities ────────────────────────────────── */
+@layer components {
+
+  /* Card base — dark surface, subtle border */
+  .card {
+    @apply bg-surface-card border border-surface-border rounded-xl2 shadow-card
+           transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:bg-surface-elevated hover:shadow-glow hover:border-accent/40
+           hover:-translate-y-0.5;
+  }
+
+  /* Shimmer skeleton — gradient spelled out so Tailwind doesn't need to
+     resolve theme() tokens inside a custom property at build time.       */
+  .skeleton {
+    border-radius: 0.5rem;
+    /* fallback colour while gradient loads */
+    background-color: #1e2535;
+    background-image: linear-gradient(
+      90deg,
+      #1e2535 0%,
+      #2a3347 45%,
+      #1e2535 90%
+    );
+    background-size: 300% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  /* Badge / pill */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full
+           text-xs font-medium leading-none;
+  }
+
+  /* Icon button */
+  .icon-btn {
+    @apply p-2 rounded-lg text-text-muted
+           hover:text-text-primary hover:bg-surface-elevated
+           transition-all duration-150 active:scale-95;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg bg-accent text-white font-medium text-sm
+           hover:bg-accent-soft active:scale-95 transition-all duration-150
+           shadow-glow;
+  }
+
+  /* Danger button */
+  .btn-danger {
+    @apply px-4 py-2 rounded-lg bg-negative/10 text-negative
+           border border-negative/30 font-medium text-sm
+           hover:bg-negative/20 active:scale-95 transition-all duration-150;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply px-4 py-2 rounded-lg text-text-muted font-medium text-sm
+           hover:text-text-primary hover:bg-surface-elevated
+           active:scale-95 transition-all duration-150;
+  }
+
+  /* Widget section label */
+  .widget-title {
+    @apply text-xs font-semibold uppercase tracking-widest text-text-faint;
+  }
+
+  /* Stale / warning banner — fixed opacity since bg-warning/8 isn't a
+     standard Tailwind step and renders as transparent in some builds.  */
+  .stale-banner {
+    background-color: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.22);
+    @apply flex items-center gap-2 px-3 py-2 rounded-lg
+           text-xs text-warning/90;
+  }
+}
+
+/* ── Utility layer extras ───────────────────────────────── */
+@layer utilities {
+  /* Monospaced tabular numbers for prices / timestamps */
+  .tabular {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: "tnum";
+  }
+
+  /* Accent focus ring */
+  .ring-accent-glow {
+    box-shadow: 0 0 0 3px rgba(124, 111, 247, 0.25);
+  }
+
+  /* Safe-area padding for notch devices */
+  .safe-top    { padding-top:    env(safe-area-inset-top, 0px); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
