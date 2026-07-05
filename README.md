@@ -64,7 +64,7 @@
 ```bash
 # 1. Clone the repo
 git clone https://github.com/Vansh-Coder399/ryuenxHub.git
-cd ryuenxhub
+cd ryuenxHub
 
 # 2. Install dependencies
 npm install
@@ -91,7 +91,7 @@ npm run preview     # preview the production build locally
 
 **One-click deploy:**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ryuenx/ryuenxhub)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Vansh-Coder399/ryuenxHub)
 
 **Manual deploy:**
 
@@ -174,6 +174,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full guide.
 
 <div align="center">
 
-Built by **[Vansh Tiwari (Ryuenx)](https://github.com/ryuenx)** · Give it a ⭐ if you find it useful!
+Built by **[Vansh Tiwari (Ryuenx)](https://github.com/Vansh-Coder399)** · Give it a ⭐ if you find it useful!
 
 </div>

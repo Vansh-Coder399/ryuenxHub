@@ -18,7 +18,7 @@ RyuenxHub is an open-source personal dashboard built to be genuinely useful and 
 ## Development Setup
 
 ```bash
-git clone https://github.com/ryuenx/ryuenxhub.git
+git clone https://github.com/Vansh-Coder399/ryuenxHub.git
 cd ryuenxhub
 npm install
 npm run dev          # http://localhost:5173

@@ -42,7 +42,7 @@ export default function Sidebar({ onOpenNotes, notesOpen }) {
 
       {/* GitHub */}
       <a
-        href="https://github.com/ryuenx"
+        href="https://github.com/Vansh-Coder399"
         target="_blank"
         rel="noopener noreferrer"
         className="icon-btn"
