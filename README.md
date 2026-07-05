@@ -11,9 +11,9 @@
 [![Deploy with Vercel](https://img.shields.io/badge/Deploy-Vercel-000?style=flat-square&logo=vercel)](https://vercel.com)
 
 <!-- Replace with your own screenshot or GIF after first deploy -->
-![RyuenxHub Dashboard Screenshot](./public/screenshot-placeholder.png)
+<!-- ![RyuenxHub Dashboard Screenshot](./public/screenshot-placeholder.png) -->
 
-[**Live Demo →**](https://ryuenxhub.vercel.app) &nbsp;·&nbsp; [Report a Bug](https://github.com/ryuenx/ryuenxhub/issues) &nbsp;·&nbsp; [Request a Feature](https://github.com/ryuenx/ryuenxhub/issues)
+[**Live Demo →**](https://ryuenxhub.vercel.app) &nbsp;·&nbsp; [Report a Bug](https://github.com/Vansh-Coder399/ryuenxhub/issues) &nbsp;·&nbsp; [Request a Feature](https://github.com/Vansh-Coder399/ryuenxhub/issues)
 
 </div>
 
