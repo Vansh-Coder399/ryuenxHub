@@ -13,7 +13,7 @@
 <!-- Replace with your own screenshot or GIF after first deploy -->
 <!-- ![RyuenxHub Dashboard Screenshot](./public/screenshot-placeholder.png) -->
 
-[**Live Demo →**](https://ryuenx=hub.vercel.app) &nbsp;·&nbsp; [Report a Bug](https://github.com/Vansh-Coder399/ryuenxhub/issues) &nbsp;·&nbsp; [Request a Feature](https://github.com/Vansh-Coder399/ryuenxhub/issues)
+[**Live Demo →**](https://ryuenx-hub.vercel.app) &nbsp;·&nbsp; [Report a Bug](https://github.com/Vansh-Coder399/ryuenxhub/issues) &nbsp;·&nbsp; [Request a Feature](https://github.com/Vansh-Coder399/ryuenxhub/issues)
 
 </div>
 
